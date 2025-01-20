@@ -21,6 +21,11 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} },
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
+		{
+			"pmizio/typescript-tools.nvim",
+			dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+			opts = {},
+		},
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
@@ -146,6 +151,8 @@ return {
 		local ensure_installed = vim.tbl_keys(servers or {})
 		vim.list_extend(ensure_installed, {
 			"stylua", -- Used to format Lua code  (lua code formatter)
+			"prettierd",
+			"prettier",
 		})
 		require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
