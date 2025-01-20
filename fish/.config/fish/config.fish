@@ -19,3 +19,7 @@ alias neovim="nv"
 
 # nvm
 nvm use latest
+
+# gpg
+export GPG_TTY=$(tty)
+
