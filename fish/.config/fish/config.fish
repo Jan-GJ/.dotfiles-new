@@ -16,3 +16,6 @@ alias nv="nvim"
 alias vi="nv"
 alias vim="nv"
 alias neovim="nv"
+
+# nvm
+nvm use latest
