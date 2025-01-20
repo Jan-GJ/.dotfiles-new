@@ -13,3 +13,6 @@ alias ls="lse --no-user --no-permissions --no-filesize --no-time --absolute=off"
 
 # nvim
 alias nv="nvim"
+alias vi="nv"
+alias vim="nv"
+alias neovim="nv"
