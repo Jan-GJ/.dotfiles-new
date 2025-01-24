@@ -23,3 +23,9 @@ nvm use latest
 # gpg
 export GPG_TTY=$(tty)
 
+
+# pnpm
+set -gx PNPM_HOME "/Users/jangrossejuttermann/Library/pnpm"
+if not string match -q -- $PNPM_HOME $PATH
+  set -gx PATH "$PNPM_HOME" $PATH
+end
