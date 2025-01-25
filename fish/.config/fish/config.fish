@@ -2,6 +2,9 @@ if status is-interactive
 	# Commands to run in interactive sessions can go here
 end
 
+# fish
+set fish_greeting
+
 # theme
 if test -f ~/.config/fish/tokyonight_night.fish
     source ~/.config/fish/tokyonight_night.fish
@@ -21,11 +24,10 @@ alias vim="nv"
 alias neovim="nv"
 
 # nvm
-nvm use latest
+nvm use latest &> /dev/null
 
 # gpg
 export GPG_TTY=$(tty)
-
 
 # pnpm
 set -gx PNPM_HOME "/Users/jangrossejuttermann/Library/pnpm"
