@@ -28,6 +28,7 @@ nvm use latest &> /dev/null
 
 # gpg
 export GPG_TTY=$(tty)
+gpgconf --launch gpg-agent
 
 # pnpm
 set -gx PNPM_HOME "/Users/jangrossejuttermann/Library/pnpm"
