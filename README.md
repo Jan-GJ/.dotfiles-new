@@ -13,7 +13,7 @@
         - Teamspeak
     - ghostty
     - KeepassXC
-    - firefox
+    - Zen Browser 
 - cli 
     - tmux
         - plugin manager: tpm
