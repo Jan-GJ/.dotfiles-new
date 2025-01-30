@@ -1,0 +1,7 @@
+theme = light:tokyonight-day,dark:tokyonight_night
+font-family = JetBrainsMono Nerd Font Mono
+font-size = 19
+window-decoration = false
+window-padding-y = 0
+window-padding-x = 0
+
