@@ -1,4 +1,5 @@
 theme = light:tokyonight-day,dark:tokyonight_night
+background = #000000
 font-family = JetBrainsMono Nerd Font Mono
 font-size = 19
 window-decoration = false
