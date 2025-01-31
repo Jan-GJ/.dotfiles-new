@@ -10,7 +10,6 @@
     - Communication
         - Zoom.us
         - Discord
-        - Teamspeak
     - ghostty
     - KeepassXC
     - Zen Browser 
@@ -73,6 +72,7 @@
 - Microsoft PowerToys
 - Replace ghostty with wezterm
 - TranslucentTB
+- Teamspeak
 
 # Linux specific packages
 - Distro: ArchLinux or NixOS
