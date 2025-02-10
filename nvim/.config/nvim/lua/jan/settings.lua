@@ -22,7 +22,7 @@ vim.o.shiftwidth = 4 -- Number of spaces inserted when indenting
 --vim.opt.listchars = { tab = '» ', trail = '·', nbsp = '␣' }
 
 -- this make lualine and cmd bar on the same level
-vim.o.cmdheight = 0
+--vim.o.cmdheight = 0
 
 --Lines above and below cursor while navigating file
 vim.opt.scrolloff = 8
