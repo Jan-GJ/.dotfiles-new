@@ -43,7 +43,7 @@ vim.opt.termguicolors = true
 vim.opt.clipboard:append("unnamedplus")
 
 --Max columncount
-vim.opt.colorcolumn = "80"
+--vim.opt.colorcolumn = "80"
 
 --Diasble text wrapping
 vim.opt.wrap = false

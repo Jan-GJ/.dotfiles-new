@@ -21,11 +21,6 @@ return {
 		{ "j-hui/fidget.nvim", opts = {} },
 		-- Allows extra capabilities provided by nvim-cmp
 		"hrsh7th/cmp-nvim-lsp",
-		{
-			"pmizio/typescript-tools.nvim",
-			dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-			opts = {},
-		},
 	},
 	config = function()
 		vim.api.nvim_create_autocmd("LspAttach", {
