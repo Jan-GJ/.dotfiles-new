@@ -47,3 +47,7 @@ vim.opt.clipboard:append("unnamedplus")
 
 --Diasble text wrapping
 vim.opt.wrap = false
+
+-- Save undo history
+vim.opt.undofile = true
+vim.opt.undolevels = 10000
