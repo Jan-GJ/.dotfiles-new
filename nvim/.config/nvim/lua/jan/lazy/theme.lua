@@ -1,7 +1,7 @@
 return {
-	"tjdevries/colorbuddy.nvim",
+	"folke/tokyonight.nvim",
 	dependencies = {
-		--		"folke/tokyonight.nvim",
+		-- "tjdevries/colorbuddy.nvim",
 	},
 	lazy = false,
 	priority = 1000,
@@ -9,7 +9,8 @@ return {
 		transparent = true,
 	},
 	config = function(_, opts)
-		--		require("tokyonight").setup(opts)
-		vim.cmd([[colorscheme gruvbuddy]])
+		require("tokyonight").setup(opts)
+		-- vim.cmd([[colorscheme gruvbuddy]])
+		vim.cmd([[colorscheme tokyonight-night]])
 	end,
 }
