@@ -18,6 +18,7 @@ return {
 			-- C-k: Toggle signature help (if signature.enabled = true)
 			keymap = { preset = "enter" },
 			completion = {
+				accept = { auto_brackets = { enabled = true } },
 				documentation = { auto_show = true, auto_show_delay_ms = 0 },
 				menu = {
 					draw = {

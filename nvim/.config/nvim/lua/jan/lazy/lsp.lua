@@ -43,7 +43,35 @@ return {
 				},
 			},
 			-- typescript lsp
-			ts_ls = {},
+			vtsls = {
+				settings = {
+					complete_function_calls = true,
+					vtsls = {
+						enableMoveToFileCodeAction = true,
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							maxInlayHintLength = 30,
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+					typescript = {
+						updateImportsOnFileMove = { enabled = "always" },
+						suggest = {
+							completeFunctionCalls = true,
+						},
+						inlayHints = {
+							enumMemberValues = { enabled = true },
+							functionLikeReturnTypes = { enabled = true },
+							parameterNames = { enabled = "literals" },
+							parameterTypes = { enabled = true },
+							propertyDeclarationTypes = { enabled = true },
+							variableTypes = { enabled = false },
+						},
+					},
+				},
+			},
 			-- go lsp
 			gopls = {},
 		},
@@ -70,7 +98,11 @@ return {
 			---@type table<string, fun(server_name: string)>?
 			handlers = {
 				function(server_name)
-					local server_opts = opts.servers[server_name]
+					local server_opts = opts.servers[server_name] or {}
+
+					--add blink capabilities
+					server_opts.capabilities = require("blink.cmp").get_lsp_capabilities(server_opts.capabilities)
+
 					require("lspconfig")[server_name].setup(server_opts or {})
 				end,
 			},
