@@ -16,10 +16,10 @@ return {
 			-- C-n/C-p or Up/Down: Select next/previous item
 			-- C-e: Hide menu
 			-- C-k: Toggle signature help (if signature.enabled = true)
-			keymap = { preset = "enter" },
+			keymap = { preset = "enter", ["<C-h>"] = { "show_documentation" } },
 			completion = {
 				accept = { auto_brackets = { enabled = true } },
-				documentation = { auto_show = true, auto_show_delay_ms = 0 },
+				documentation = { auto_show = false, auto_show_delay_ms = 0, treesitter_highlighting = true },
 				menu = {
 					draw = {
 						columns = { { "label", gap = 1 }, { "kind_icon", "kind" }, { "label_description", gap = 1 } },
