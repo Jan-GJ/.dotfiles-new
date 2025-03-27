@@ -1,4 +1,4 @@
-theme = light:tokyonight-day,dark:GruvBoxDarkHard
+theme = light:tokyonight-day,dark:tokyonight_night
 background = #111
 background-opacity = 1
 font-family = JetBrainsMono Nerd Font Mono
