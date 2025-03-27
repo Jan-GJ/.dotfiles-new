@@ -1,11 +1,14 @@
-theme = light:tokyonight-day,dark:tokyonight_night
+theme = light:tokyonight-day,dark:GruvBoxDarkHard
 background = #111
 background-opacity = 1
 font-family = JetBrainsMono Nerd Font Mono
-font-size = 19
+#font-family = Berkeley Mono Trial 
+font-size = 20
 window-decoration = auto
 macos-titlebar-style = tabs
 window-padding-y = 0
 window-padding-x = 0
 title = " "
+cursor-style = block
+cursor-style-blink = false
 #custom-shader = ghostty-shaders/inside-the-matrix.glsl
