@@ -1,8 +1,8 @@
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		{ "williamboman/mason.nvim", opts = {} },
-		{ "williamboman/mason-lspconfig.nvim", config = function() end },
+		{ "mason-org/mason.nvim", opts = {} },
+		{ "mason-org/mason-lspconfig.nvim", config = function() end },
 		{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
 		{
 			"folke/lazydev.nvim",
@@ -14,68 +14,83 @@ return {
 			},
 		},
 	},
-	opts = {
-		formatters = {
-			-- lua formatter
-			stylua = {},
-		},
-		servers = {
-			-- lua lsp
-			lua_ls = {
-				settings = {
-					Lua = {
-						runtime = {
-							version = "LuaJIT",
-						},
-						workspace = {
-							checkThirdPary = false,
-							library = {
-								vim.env.VIMRUNTIME,
-							},
-						},
-						completion = {
-							callSnippet = "Replace",
-						},
-						diagnostics = {
-							--disable = { "missing-fields" }
-						},
+	opts = function()
+		return {
+			formatters = {
+				-- lua formatter
+				stylua = {},
+			},
+			servers = {
+				-- eslint
+				eslint = {
+					settings = {
+						-- helps eslint find the eslintrc when it's placed in a subfolder instead of the cwd root
+						workingDirectories = { mode = "auto" },
 					},
 				},
-			},
-			-- typescript lsp
-			vtsls = {
-				settings = {
-					complete_function_calls = true,
-					vtsls = {
-						enableMoveToFileCodeAction = true,
-						autoUseWorkspaceTsdk = true,
-						experimental = {
-							maxInlayHintLength = 30,
+				-- lua lsp
+				lua_ls = {
+					settings = {
+						Lua = {
+							runtime = {
+								version = "LuaJIT",
+							},
+							workspace = {
+								checkThirdPary = false,
+								library = {
+									vim.env.VIMRUNTIME,
+								},
+							},
 							completion = {
-								enableServerSideFuzzyMatch = true,
+								callSnippet = "Replace",
+							},
+							diagnostics = {
+								--disable = { "missing-fields" }
 							},
 						},
 					},
-					typescript = {
-						updateImportsOnFileMove = { enabled = "always" },
-						suggest = {
-							completeFunctionCalls = true,
+				},
+				-- typescript lsp
+				vtsls = {
+					settings = {
+						complete_function_calls = true,
+						vtsls = {
+							enableMoveToFileCodeAction = true,
+							autoUseWorkspaceTsdk = true,
+							experimental = {
+								maxInlayHintLength = 30,
+								completion = {
+									enableServerSideFuzzyMatch = true,
+								},
+							},
 						},
-						inlayHints = {
-							enumMemberValues = { enabled = true },
-							functionLikeReturnTypes = { enabled = true },
-							parameterNames = { enabled = "literals" },
-							parameterTypes = { enabled = true },
-							propertyDeclarationTypes = { enabled = true },
-							variableTypes = { enabled = false },
+						typescript = {
+							updateImportsOnFileMove = { enabled = "always" },
+							suggest = {
+								completeFunctionCalls = true,
+							},
+							inlayHints = {
+								enumMemberValues = { enabled = true },
+								functionLikeReturnTypes = { enabled = true },
+								parameterNames = { enabled = "literals" },
+								parameterTypes = { enabled = true },
+								propertyDeclarationTypes = { enabled = true },
+								variableTypes = { enabled = false },
+							},
 						},
 					},
 				},
+				-- go lsp
+				gopls = {},
+				-- deno lsp
+				-- denols = {
+				-- 	root_dir = require("lspconfig").util.root_pattern({ "deno.json", "deno.jsonc" }),
+				-- 	single_file_support = false,
+				-- 	settings = {},
+				-- },
 			},
-			-- go lsp
-			gopls = {},
-		},
-	},
+		}
+	end,
 	config = function(_, opts)
 		local servers = vim.tbl_keys(opts.servers or {})
 		local formatters = vim.tbl_keys(opts.formatters or {})
@@ -97,6 +112,10 @@ return {
 				map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 				map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
 				map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+				map("vd", function()
+					vim.diagnostic.open_float()
+				end, "[V]iew [D]iagnostics")
+				-- map("n", "<leader>cd", vim.diagnostic.open_float, { desc = "Line Diagnostics" })
 			end,
 		})
 
@@ -118,8 +137,16 @@ return {
 			---@type table<string, fun(server_name: string)>?
 			handlers = {
 				function(server_name)
+					if server_name == "ts_ls" then
+						return
+					end
+					-- if server_name == "vtsls" then
+					-- 	return
+					-- end
+					if server_name == "denols" then
+						return
+					end
 					local server_opts = opts.servers[server_name] or {}
-
 					--add blink capabilities
 					server_opts.capabilities = require("blink.cmp").get_lsp_capabilities(server_opts.capabilities)
 

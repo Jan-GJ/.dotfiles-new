@@ -1,9 +1,10 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
-		local myTheme = require("lualine.themes.gruvbox")
+		local myTheme = require("lualine.themes.tokyonight")
 		myTheme.normal.c.bg = "None" --transparent
 		require("lualine").setup({
+			theme = myTheme,
 			options = {
 				icons_enabled = false,
 				theme = myTheme,
